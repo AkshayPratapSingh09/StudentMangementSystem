@@ -1,0 +1,17 @@
+Error : 
+
+traceback (most recent call last):
+  File "file1.py", line 61, in <module>
+    obj = Student(root)
+  File "file1.py", line 51, in __init__
+    DataLeftFrame=LabelFrame(Manage_Frame,bd=4,relief=RIDGE,padx=2,text="Student Information",font=("times new roman"))
+  File "/usr/lib/python3.6/tkinter/__init__.py", line 3793, in __init__
+    Widget.__init__(self, master, 'labelframe', cnf, kw)
+  File "/usr/lib/python3.6/tkinter/__init__.py", line 2299, in __init__
+    (widgetName, self._w) + extra + self._options(cnf))
+_tkinter.TclError: expected integer but got "new"
+
+
+Solution :
+
+The issue is that you can't specify a font using a string if the name includes spaces: the 'New' is being parsed as the font size. You need to write the font specifications as tuples: ("Courier New", 20) for example, to bypass this parsing step 
